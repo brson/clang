@@ -74,9 +74,7 @@ RuntimeDirs :=
 ifeq ($(OS),Darwin)
 RuntimeDirs += darwin
 RuntimeLibrary.darwin.Configs := \
-	eprintf.a 10.4.a osx.a ios.a cc_kext.a cc_kext_ios5.a \
-	asan_osx.a asan_osx_dynamic.dylib \
-	profile_osx.a profile_ios.a
+	eprintf.a 10.4.a osx.a
 endif
 
 # On Linux, include a library which has all the runtime functions.
@@ -87,11 +85,11 @@ RuntimeLibrary.linux.Configs :=
 # We currently only try to generate runtime libraries on x86.
 ifeq ($(ARCH),x86)
 RuntimeLibrary.linux.Configs += \
-	full-i386.a profile-i386.a asan-i386.a
+	full-i386.a
 endif
 ifeq ($(ARCH),x86_64)
 RuntimeLibrary.linux.Configs += \
-	full-x86_64.a profile-x86_64.a asan-x86_64.a tsan-x86_64.a
+	full-x86_64.a
 endif
 
 endif
